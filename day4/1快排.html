@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<h1>快排</h1>
+<script type="text/javascript">
+	
+	var arr = [1,4,2,7,6,9,10,8]
+	var a= 0;
+	var b= arr.length-1;
+	var temp;
+	function qs(arr,a,b){
+		if(a>=b)
+			return;
+		const key = arr[a];//第一个数字为基准值 使得哨兵从right往前移动
+		var left = a;
+		var right = b;
+		while(left<right){
+			while (left<right && key<arr[right]){//从右向左找到一个比key小的数字
+				right -=1;
+			}
+			//从做向右找到一个比key大的数字
+			//这里的=号 不一定有必要 是为了保证在本轮循环结束前，key的位置不变，否则的话跳出循环
+			//交换left和a 的位置的时候，a位置上的元素有可能不是key
+			while (left<right && arr[left]<=key){
+				left += 1;
+			}
+			if(left < right)
+			{
+				var temp = arr[left];
+				arr[left] = arr[right];
+				arr[right] = temp;
+			}
+		}
+		//left 和right 相等，key的位置arr[a]进行更改，和i位置上元素进行更改
+		arr[a] = arr[left];
+		arr[left] = key;	//数值交换完毕
+		qs(arr,a,left-1);
+		qs(arr,left+1,b);
+	}
+	qs(arr,a,b);
+	// for(var i=0;i<arr.length;i++){
+	// 	console.log(arr[i]);
+	// }
+	console.log(arr);
+</script>
+</body>
+</html>
