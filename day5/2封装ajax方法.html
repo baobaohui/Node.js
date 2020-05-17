@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	
+<script>
+	
+	//原生ajax
+	// var xhttp = new XMLHttpRequest();
+	// xhttp.onreadystatechange = function(){
+	// 	if(this.readyState == 4 && this.status == 200){
+	// 		console.log(this)
+	// 		console.log(this.responseText)
+	// 	}
+	// };
+	// xhttp.open("GET","ajax.txt",true)
+	// xhttp.send();
+	
+	//封装ajax
+	function get(url,callback){
+		var oReq = new XMLHttpRequest();
+		//请求加载成功后调用的函数
+		oReq.onload = function(){
+			// console.log(oReq.responseText)
+			callback(oReq.responseText)
+		};
+		oReq.open("get",url,true);
+		oReq.send();
+	}
+	get('ajax.txt',function(data){
+		console.log(data)
+	})
+</script>
+</body>
+</html>
