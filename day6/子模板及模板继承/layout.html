@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>document</title>
+		<link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+		{{ block 'head' }}
+		{{ /block }}
+	</head>
+	<body>
+		{{ include './header.html' }}
+		
+		<!-- 留坑，留给后面天坑 -->
+		{{ block 'content' }}
+		<h1>hello {{name}}</h1>
+		{{ /block }}
+		
+		{{ include './footer.html' }}
+		
+		
+		<script src="/node_modules/jquery/dist/jquery.js"></script>
+		<script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+		{{ block 'script' }}
+		{{ /block }}
+	</body>
+</html>
